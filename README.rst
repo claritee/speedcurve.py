@@ -21,8 +21,8 @@ Example Use
    # Get trends and all tests for a URL
    urls = sc.urls()
 
-   # Retrieve metadata for a specific URL
-   urls = sc.url(14419, browser='all')
+   # Retrieve metadata for a specific URL. By default browser is optional and all browsers will be returned if browser is not specified.
+   urls = sc.url(14419, browser='chrome')
 
    # Get a test
    test = sc.test(id='140317_BA_3W8')

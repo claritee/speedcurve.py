@@ -99,20 +99,20 @@ class SpeedCurve(SpeedCurveCore):
         if json:
             return self._instance_or_null(Test, json)
 
-    def url(self, id, days=30, browser='all'):
+    def url(self, id, days=30, browser=None):
         """Retrieve url specified by id.
 
         :param int id: (required) id of URL
         :param int days: (optional) number of days of tests (max: 365)
-        :param string browser: (optional) all, chrome, firefox, ie, or safari
+        :param string browser: (optional) chrome, firefox, ie, or safari
         :returns: :class:`Url <speedcurve.urls.Url>`
 
         """
         url = self._build_url('urls', str(id))
-        params = {
-            'days': days,
-            'browser': browser
-        }
+        params = {'days': days}
+        if browser:
+            params['browser'] = browser
+
         json = self._json(self._get(url, params=params), 200)
         if json:
             return self._instance_or_null(Url, json)
